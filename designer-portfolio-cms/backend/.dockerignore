@@ -1,0 +1,13 @@
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+htmlcov
+.coverage
+db.sqlite3
+django.log
+django-run.log
+*.log
+.env
+.env.*
+!.env.example

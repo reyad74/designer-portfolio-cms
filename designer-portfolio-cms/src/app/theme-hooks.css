@@ -1,0 +1,53 @@
+/* Admin-configurable theme hooks — driven by html[data-*] set from ThemeConfig. */
+
+/* Button style */
+html[data-btn-style="pill"] button:not([data-sharp]),
+html[data-btn-style="pill"] [role="button"]:not([data-sharp]) {
+  border-radius: 9999px;
+}
+html[data-btn-style="rounded"] button:not([data-sharp]),
+html[data-btn-style="rounded"] [role="button"]:not([data-sharp]) {
+  border-radius: 10px;
+}
+html[data-btn-style="sharp"] button:not([data-sharp]),
+html[data-btn-style="sharp"] [role="button"]:not([data-sharp]) {
+  border-radius: 2px;
+}
+
+/* Section spacing scale for dynamic sections */
+html[data-spacing="compact"] {
+  --section-y: 4rem;
+  --section-gap: 3rem;
+}
+html[data-spacing="comfortable"] {
+  --section-y: 7rem;
+  --section-gap: 5rem;
+}
+html[data-spacing="spacious"] {
+  --section-y: 11rem;
+  --section-gap: 8rem;
+}
+
+/* Card appearance for sections opting in via .theme-card */
+html[data-card-style="glass"] .theme-card {
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+html[data-card-style="outlined"] .theme-card {
+  background: transparent;
+  border: 1px solid var(--border);
+}
+html[data-card-style="flat"] .theme-card {
+  background: var(--card);
+  border: 1px solid transparent;
+}
+
+/* Light-mode affordances (admin flips mode via ThemeConfig) */
+html[data-theme-mode="LIGHT"] {
+  color-scheme: light;
+}
+html[data-theme-mode="LIGHT"] ::selection {
+  background: var(--primary);
+  color: #ffffff;
+}

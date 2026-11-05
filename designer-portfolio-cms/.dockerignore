@@ -1,0 +1,42 @@
+# ── Build-context hygiene: keep the Docker images small and secret-free ──
+# Dependencies (installed inside the images)
+node_modules
+.next
+backend/.venv
+bun.lockb
+
+# Local dev artifacts
+dev.log
+server.log
+backend/django.log
+backend/django-run.log
+backend/db.sqlite3
+db/custom.db
+*.log
+
+# Python caches
+**/__pycache__
+**/*.pyc
+backend/.pytest_cache
+backend/htmlcov
+backend/.coverage
+
+# Secrets — NEVER bake into images
+.env
+.env.*
+!.env.example
+
+# Git & sandbox-only folders
+.git
+.gitignore
+download
+upload
+tool-results
+agent-ctx
+skills
+examples
+mini-services
+tests/e2e-artifacts
+
+# Next.js build output inside builder stage is produced fresh
+next-env.d.ts.bak

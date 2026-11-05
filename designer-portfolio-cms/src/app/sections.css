@@ -1,0 +1,44 @@
+/*
+ * Companion to globals.css / theme-hooks.css for the CMS-driven section
+ * renderer and the admin draft-preview shell (globals.css stays frozen).
+ */
+
+:root {
+  /* Default vertical rhythm for CMS sections; html[data-spacing] in
+     theme-hooks.css overrides this when a ThemeConfig is applied. */
+  --section-y: 7rem;
+  --section-gap: 5rem;
+}
+
+/* Base card treatment for CMS section wrappers opting in via .theme-card.
+   The html[data-card-style="…"] variants in theme-hooks.css take precedence
+   (higher specificity) once a ThemeConfig has been applied. */
+.theme-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* backgroundStyle: "gradient" — subtle radial glow keyed to the live theme
+   primary color via color-mix(), so admin theme changes propagate. */
+.section-bg-gradient {
+  background-image: radial-gradient(
+    ellipse 60% 46% at 50% 0%,
+    color-mix(in srgb, var(--primary) 8%, transparent),
+    transparent 72%
+  );
+}
+
+/* Admin preview device frame */
+.preview-frame {
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.preview-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.preview-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.preview-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
